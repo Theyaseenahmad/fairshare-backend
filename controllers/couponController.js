@@ -30,12 +30,32 @@ const couponController = async (req,res)=>{
 
   console.log('here');
   
-
+ 
   try {
     const coupon = await Coupon.findOne({ isClaimed: false })
     .sort({ createdAt: 1 });
 
     console.log("coupon",coupon);
+
+    
+    if (!coupon) {
+      return res.status(404).json({ error: "No coupons left! 😢" });
+    }
+
+    coupon.isClaimed = true;
+      coupon.claimedAt = new Date();
+      await coupon.save();
+
+      await redisClient.set(`ip:${clientIp}`, Date.now(), "EX", 3600);
+
+      res.cookie('last_claim', Date.now(), { 
+        maxAge: 3600000, // 1 hour
+        secure: process.env.NODE_ENV === 'production', 
+        sameSite: 'strict' 
+      });
+
+
+    res.status(200).json({ coupon });
     
   } catch (error) {
     console.log("error",error);
@@ -45,24 +65,6 @@ const couponController = async (req,res)=>{
 
    
 
-    if (!coupon) {
-        return res.status(404).json({ error: "No coupons left! 😢" });
-      }
-
-      coupon.isClaimed = true;
-        coupon.claimedAt = new Date();
-        await coupon.save();
-
-  await redisClient.set(`ip:${clientIp}`, Date.now(), "EX", 3600);
-
-  res.cookie('last_claim', Date.now(), { 
-    maxAge: 3600000, // 1 hour
-    secure: process.env.NODE_ENV === 'production', 
-    sameSite: 'strict' 
-  });
-
-
-  res.status(200).json({ coupon });
 }
 
 export default couponController
