@@ -52,7 +52,7 @@ const couponController = async (req,res)=>{
 
       await redisClient.set(`ip:${clientIp}`, Date.now(), "EX", 3600);
 
-      await res.cookie('last_claim', Date.now(), { 
+       res.cookie('last_claim', Date.now(), { 
         maxAge: 3600000, // 1 hour
         secure: process.env.NODE_ENV === 'production', 
         sameSite: 'strict' 
