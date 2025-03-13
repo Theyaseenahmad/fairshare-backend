@@ -2,6 +2,10 @@ import express from "express"
 import cors from "cors"
 import couponRouter from "./routes/couponRoutes.js"
 import cookieParser from "cookie-parser"
+import dotenv from "dotenv"
+
+// Load environment variables
+dotenv.config();
 
 const app = express()
 
