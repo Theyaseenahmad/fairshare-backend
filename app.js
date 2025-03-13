@@ -2,6 +2,8 @@ import express from "express"
 import cors from "cors"
 import couponRouter from "./routes/couponRoutes.js"
 import cookieParser from "cookie-parser"
+
+import redisClient from "../redis/redis.js";
 import dotenv from "dotenv"
 
 // Load environment variables
@@ -19,8 +21,13 @@ app.use(cors({
 
 app.use('/',couponRouter)
 
-app.get('/health', (req, res) => {
-    res.status(200).json({ status: 'ok' });
+app.get('/health', async(req, res) => {
+  try {
+    await redisClient.ping(); // Ping Redis to ensure it's active
+    res.status(200).json({ status: "ok", redis: "connected" });
+  } catch (err) {
+    res.status(500).json({ status: "error", redis: "disconnected" });
+  }
   });
 
 export default app;
