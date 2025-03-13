@@ -1,6 +1,10 @@
 import Coupon from "../models/Coupon.js";
 import requestIp from 'request-ip'
 import redisClient from "../redis/redis.js";
+import dotenv from "dotenv"
+
+dotenv.config()
+
 const couponController = async (req,res)=>{
     console.log(req.ip);
     console.log(Date.now());
@@ -48,7 +52,7 @@ const couponController = async (req,res)=>{
 
       await redisClient.set(`ip:${clientIp}`, Date.now(), "EX", 3600);
 
-      res.cookie('last_claim', Date.now(), { 
+      await res.cookie('last_claim', Date.now(), { 
         maxAge: 3600000, // 1 hour
         secure: process.env.NODE_ENV === 'production', 
         sameSite: 'strict' 
