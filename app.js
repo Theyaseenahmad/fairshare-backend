@@ -19,4 +19,8 @@ app.use(cors({
 
 app.use('/',couponRouter)
 
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'ok' });
+  });
+
 export default app;
