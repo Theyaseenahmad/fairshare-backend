@@ -13,7 +13,7 @@ app.use(express.json())
 app.use(cookieParser())
 
 app.use(cors({
-    origin:"https://fairshare-frontend.vercel.app",
+    origin:"https://fairshare-frontend.vercel.app/", 
     credentials:true
 }))
 
