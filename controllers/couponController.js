@@ -31,8 +31,19 @@ const couponController = async (req,res)=>{
   console.log('here');
   
 
+  try {
     const coupon = await Coupon.findOne({ isClaimed: false })
     .sort({ createdAt: 1 });
+
+    console.log("coupon",coupon);
+    
+  } catch (error) {
+    console.log("error",error);
+    return res.status(500).json({error:"database down",error})
+    
+  }
+
+   
 
     if (!coupon) {
         return res.status(404).json({ error: "No coupons left! 😢" });
