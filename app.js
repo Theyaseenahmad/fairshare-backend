@@ -3,8 +3,8 @@ import cors from "cors"
 import couponRouter from "./routes/couponRoutes.js"
 import cookieParser from "cookie-parser"
 
-import redisClient from "../redis/redis.js";
 import dotenv from "dotenv"
+import redisClient from "./redis/redis.js"
 
 // Load environment variables
 dotenv.config();
