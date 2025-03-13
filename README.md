@@ -15,6 +15,11 @@ A scalable coupon-sharing platform that ensures **fair usage** and **real-time t
 
 ---
 
+## 🔗 Live Video Demo
+**[https://drive.google.com/file/d/1hkiQ3hCnA23YucVmFnIH3FmAhCeap2fG/view?usp=drive_link](https://drive.google.com/file/d/1hkiQ3hCnA23YucVmFnIH3FmAhCeap2fG/view?usp=drive_link)**
+
+---
+
 ## 📂 Project Structure
 backend/
 ├── config/
