@@ -8,7 +8,7 @@ console.log('password',process.env.REDIS_PASSWORD);
 
 
 const redisClient = await redis.createClient({
-  url: `redis://${process.env.REDIS_URL}`,
+  url: `${process.env.REDIS_URL}`,
   password: process.env.REDIS_PASSWORD, // Password for authentication
 });
 
