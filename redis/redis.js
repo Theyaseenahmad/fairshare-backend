@@ -1,5 +1,13 @@
 import redis from 'redis'
-const redisClient = redis.createClient({
+import dotenv from 'dotenv'
+
+dotenv.config()
+
+console.log('url',process.env.REDIS_URL);
+console.log('password',process.env.REDIS_PASSWORD);
+
+
+const redisClient = await redis.createClient({
   url: `redis://${process.env.REDIS_URL}`,
   password: process.env.REDIS_PASSWORD, // Password for authentication
 });

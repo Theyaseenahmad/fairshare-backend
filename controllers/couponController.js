@@ -27,6 +27,10 @@ const couponController = async (req,res)=>{
     });
   }
 
+
+  console.log('here');
+  
+
     const coupon = await Coupon.findOne({ isClaimed: false })
     .sort({ createdAt: 1 });
 
