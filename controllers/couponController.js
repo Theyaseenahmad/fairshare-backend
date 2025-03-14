@@ -54,8 +54,7 @@ const couponController = async (req,res)=>{
 
       res.cookie('last_claim', Date.now(), { 
         maxAge: 3600000, // 1 hour
-        secure: process.env.NODE_ENV === 'production', // Required for HTTPS
-        sameSite: 'none', 
+        secure: process.env.NODE_ENV === 'production', // Required for HTTPS\
         httpOnly: true, 
       });
 
