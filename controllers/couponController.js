@@ -56,7 +56,7 @@ const couponController = async (req,res)=>{
         maxAge: 3600000, // 1 hour
         secure: true, 
         sameSite: 'none', 
-        httpOnly: true, // More secure
+        httpOnly: false, // More secure
       });
       
 
