@@ -56,7 +56,7 @@ const couponController = async (req,res)=>{
         maxAge: 3600000, // 1 hour
         secure: process.env.NODE_ENV === 'production', // Required for HTTPS
         sameSite: 'none', 
-        httpOnly: false, 
+        httpOnly: true, 
       });
 
 
