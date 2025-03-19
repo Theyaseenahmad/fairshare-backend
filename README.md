@@ -106,6 +106,8 @@ sequenceDiagram
     Backend-->>Frontend: 200 OK + Coupon
   end
 
+```
+
 Installation
     git clone https://github.com/Theyaseenahmad/fairshare-frontend.git
     cd fairshare-frontend
